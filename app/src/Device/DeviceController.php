@@ -24,7 +24,7 @@ class DeviceController
         return $response;
     }
 
-    public function getById(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+    public function findById(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $device = $this->deviceRepository->getDevice($args['id']);
 

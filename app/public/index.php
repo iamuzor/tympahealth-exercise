@@ -12,6 +12,6 @@ $app = AppFactory::create();
 
 $app->group('/devices', function (RouteCollectorProxy $group) {
     $group->get('', [DeviceController::class, 'index']);
-    $group->get('/{id}', [DeviceController::class, 'getById']);
+    $group->get('/{id}', [DeviceController::class, 'findById']);
 });
 $app->run();
