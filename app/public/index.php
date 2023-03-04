@@ -1,4 +1,5 @@
 <?php
+use Tympahealth\DeviceManagement\Device\DeviceRepository;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -8,7 +9,7 @@ use Tympahealth\DeviceManagement\Device\DeviceController;
 
 
 $container = new Container();
-$container->set('HelloWorld', 'Hello World Everyoneeee');
+$container->set(DeviceRepository::class, new DeviceRepository());
 
 AppFactory::setContainer($container);
 
