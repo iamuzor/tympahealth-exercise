@@ -1,0 +1,17 @@
+{
+    "name": "tympahealth/device_management",
+    "autoload": {
+        "psr-4": {
+            "Tympahealth\\DeviceManagement\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "uzor"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.11",
+        "laminas/laminas-diactoros": "^2.24"
+    }
+}
