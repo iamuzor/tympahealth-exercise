@@ -1,6 +1,6 @@
 <?php
 
-namespace Tympahealth\DeviceManagement;
+namespace Tympahealth\App;
 
 use Psr\Container\ContainerInterface;
 
