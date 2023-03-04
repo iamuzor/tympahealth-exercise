@@ -40,19 +40,17 @@ class DeviceRepository implements IDeviceRepository
 
     public function find(string $id): array
     {
-        var_dump($this->db->query('SELECT * FROM devices WHERE id = :id', [
-            'id' => $id
-        ])->fetch());
-        die();
-        return $this->db->query('SELECT * FROM devices WHERE id = :id', [
-            'id' => $id
+        $data = $this->db->query("SELECT * FROM devices WHERE id = :id LIMIT 1", [
+            ':id' => $id
         ])->fetchAll();
+
+        return count($data) ? $data[0] : [];
     }
 
     public function search(string $text): array
     {
-        return $this->db->query('SELECT * FROM devices WHERE brand LIKE :text OR os LIKE :text OR model LIKE :text', [
-            'text' => "%$text%"
+        return $this->db->query("SELECT * FROM devices WHERE brand LIKE :text OR os LIKE :text OR model LIKE :text", [
+            ':text' => "%$text%"
         ])->fetchAll();
     }
 

@@ -57,6 +57,7 @@ class DeviceController
     {
         $repository = $this->container->get(IDeviceRepository::class);
         Device::update($repository, $args['id'], $request->getParsedBody());
+
         $response->getBody()->write(json_encode(['updated' => true]));
 
         return $response->withHeader('Content-Type', 'application/json');

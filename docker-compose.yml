@@ -11,7 +11,7 @@ services:
       - DB_PASSWORD=test_pass
       - DB_NAME=test_db
       - DB_HOST=db
-      - DB_PORT=3306
+      - DB_PORT=5432
     depends_on:
       - db
 

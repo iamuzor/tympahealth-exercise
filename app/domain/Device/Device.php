@@ -2,7 +2,6 @@
 
 namespace Tympahealth\Domain\Device;
 
-use DateTime;
 use DomainException;
 use Ramsey\Uuid\Uuid;
 use Tympahealth\Domain\Device\IDeviceRepository;
@@ -15,8 +14,6 @@ class Device implements \JsonSerializable
         public readonly string $model,
         public readonly string $os,
         public readonly string $release_date,
-        public readonly string $created_at,
-        private string $updated_at
     )
     {
     }
@@ -45,8 +42,6 @@ class Device implements \JsonSerializable
             $data['model'],
             $data['os'],
             $data['release_date'],
-            (new DateTime())->format('Y/m/d'),
-            (new DateTime())->format('Y/m/d')
         );
 
         $repository->save($device);
@@ -68,15 +63,17 @@ class Device implements \JsonSerializable
                 $data['brand'] ?? $device['brand'],
                 $data['model'] ?? $device['model'],
                 $data['os'] ?? $device['os'],
-                $data['release_date'] ?? $device['release_date'],
-                $device['created_at'],
-                (new DateTime())->format('Y/m/d')
+                $data['release_date'] ?? $device['release_date']
             )
         );
     }
 
     public static function delete(IDeviceRepository $repository, string $id): void
     {
+        if (!$repository->find($id)) {
+            throw new DomainException('DEVICE_NOT_FOUND', 404);
+        }
+
         $repository->delete($id);
     }
 
@@ -87,9 +84,7 @@ class Device implements \JsonSerializable
             $device['brand'],
             $device['model'],
             $device['os'],
-            $device['release_date'] ?? '',
-            $device['created_at'] ?? '',
-            $device['updated_at'] ?? ''
+            $device['release_date'],
         );
     }
 
@@ -100,9 +95,7 @@ class Device implements \JsonSerializable
             'brand' => $this->brand,
             'model' => $this->model,
             'os' => $this->os,
-            'release_date' => $this->release_date,
-            'created_at' => $this?->created_at,
-            'updated_at' => $this?->updated_at,
+            'release_date' => $this->release_date
         ];
     }
 }
