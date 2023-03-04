@@ -17,7 +17,11 @@ class DeviceController
 
     public function home(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        $response->getBody()->write($this->container->get('HelloWorld'));
+        $response->getBody()->write(json_encode([
+            'message' => $this->container->has('HelloWorld'),
+        ]));
+
+        $response->withHeader('Content-Type', 'application/json');
         return $response;
     }
 }
