@@ -1,15 +1,11 @@
 <?php
-use Slim\Routing\RouteCollectorProxy;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
 use Tympahealth\DeviceManagement\Device\DeviceController;
+use Slim\Routing\RouteCollectorProxy;
 
-
-// $container = new Container();
-// $container->set(DeviceRepository::class, new DeviceRepository());
-// AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 
