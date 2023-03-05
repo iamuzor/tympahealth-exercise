@@ -35,7 +35,7 @@ class DeviceRepository implements IDeviceRepository
 
     public function getDevices(): array
     {
-        return $this->db->query('SELECT * FROM devices')->fetchAll();
+        return $this->db->query('SELECT * FROM devices ORDER BY os ASC')->fetchAll();
     }
 
     public function find(string $id): array

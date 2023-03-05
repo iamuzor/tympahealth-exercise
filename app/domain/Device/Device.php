@@ -2,6 +2,7 @@
 
 namespace Tympahealth\Domain\Device;
 
+use DateTime;
 use DomainException;
 use Ramsey\Uuid\Uuid;
 use Tympahealth\Domain\Device\IDeviceRepository;
@@ -14,6 +15,8 @@ class Device implements \JsonSerializable
         public readonly string $model,
         public readonly string $os,
         public readonly string $release_date,
+        public readonly int $created_datetime,
+        public readonly int|null $updated_datetime = null
     )
     {
     }
@@ -34,14 +37,16 @@ class Device implements \JsonSerializable
         return array_map(fn($device) => self::transform($device), $repository->getDevices());
     }
 
-    public static function create(IDeviceRepository $repository, array $data): Device
+    public static function create(IDeviceRepository $repository, string $brand, string $model, string $os, string $release_date): Device
     {
         $device = new Device(
             Uuid::uuid4()->toString(),
-            $data['brand'],
-            $data['model'],
-            $data['os'],
-            $data['release_date'],
+            $brand,
+            $model,
+            $os,
+            $release_date,
+            time(),
+            time()
         );
 
         $repository->save($device);
@@ -49,7 +54,7 @@ class Device implements \JsonSerializable
         return $device;
     }
 
-    public static function update(IDeviceRepository $repository, string $id, array $data): void
+    public static function update(IDeviceRepository $repository, string $id, array $args): void
     {
         $device = $repository->find($id);
 
@@ -60,10 +65,12 @@ class Device implements \JsonSerializable
         $repository->update(
             new Device(
                 $id,
-                $data['brand'] ?? $device['brand'],
-                $data['model'] ?? $device['model'],
-                $data['os'] ?? $device['os'],
-                $data['release_date'] ?? $device['release_date']
+                $args['brand'] ?? $device['brand'],
+                $args['model'] ?? $device['model'],
+                $args['os'] ?? $device['os'],
+                $args['release_date'] ?? $device['release_date'],
+                $device['created_datetime'],
+                time()
             )
         );
     }
@@ -85,6 +92,8 @@ class Device implements \JsonSerializable
             $device['model'],
             $device['os'],
             $device['release_date'],
+            $device['created_datetime'],
+            $device['updated_datetime']
         );
     }
 
@@ -95,7 +104,9 @@ class Device implements \JsonSerializable
             'brand' => $this->brand,
             'model' => $this->model,
             'os' => $this->os,
-            'release_date' => $this->release_date
+            'release_date' => $this->release_date,
+            'created_datetime' => $this->created_datetime,
+            'updated_datetime' => $this->updated_datetime
         ];
     }
 }

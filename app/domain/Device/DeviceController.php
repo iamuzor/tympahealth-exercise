@@ -1,7 +1,8 @@
 <?php
 
-namespace Tympahealth\App\Controllers;
+namespace Tympahealth\Domain\Device;
 
+use DateTime;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -21,7 +22,7 @@ class DeviceController
     {
         $repository = $this->container->get(IDeviceRepository::class);
         $devices = Device::all($repository);
-        $response->getBody()->write(json_encode($devices));
+        $response->getBody()->write(json_encode(['data' => $devices]));
 
         return $response->withHeader('Content-Type', 'application/json');
     }
@@ -30,7 +31,7 @@ class DeviceController
     {
         $repository = $this->container->get(IDeviceRepository::class);
         $devices = Device::search($repository, $args['text']);
-        $response->getBody()->write(json_encode($devices));
+        $response->getBody()->write(json_encode(['data' => $devices]));
 
         return $response->withHeader('Content-Type', 'application/json');
     }
@@ -38,8 +39,11 @@ class DeviceController
     public function create(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $repository = $this->container->get(IDeviceRepository::class);
-        $device = Device::create($repository, $request->getParsedBody());
-        $response->getBody()->write(json_encode($device));
+        $body = $request->getParsedBody();
+
+        $device = Device::create($repository, $body['brand'], $body['model'], $body['os'], DateTime::createFromFormat('Y/m', $body['release_date'])->format('Y/m'));
+
+        $response->getBody()->write(json_encode(['data' => $device]));
 
         return $response->withHeader('Content-Type', 'application/json');
     }
@@ -48,7 +52,7 @@ class DeviceController
     {
         $repository = $this->container->get(IDeviceRepository::class);
         Device::delete($repository, $args['id']);
-        $response->getBody()->write(json_encode(['deleted' => true]));
+        $response->getBody()->write(json_encode(['data' => ['deleted' => true]]));
 
         return $response->withHeader('Content-Type', 'application/json');
     }
@@ -56,9 +60,10 @@ class DeviceController
     public function update(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $repository = $this->container->get(IDeviceRepository::class);
+
         Device::update($repository, $args['id'], $request->getParsedBody());
 
-        $response->getBody()->write(json_encode(['updated' => true]));
+        $response->getBody()->write(json_encode(['data' => ['updated' => true]]));
 
         return $response->withHeader('Content-Type', 'application/json');
     }
