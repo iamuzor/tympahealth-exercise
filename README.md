@@ -15,8 +15,8 @@ docker compose up
 
 ## Todo
 
--
-- Web UI
+- API ✅
+- Web UI ⏳
 
 ## Improvements (Not implemented)
 
