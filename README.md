@@ -6,7 +6,7 @@ A service for managing devices. Built in PHP using the Slim Framework.
 
 - Docker.
 
-## How to run the API
+## How to use
 
 - In your terminal, run `docker compose up`
 - Run the following querying in the Postgres database.
