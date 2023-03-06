@@ -24,6 +24,6 @@ docker compose up
 - Error handling: To introduce middleware that will catch errors and return the error in JSON format.
 - Response Format: To introduce middleware for ensuring consistent data response format.
 - Security: To introduce middleware to validate a predefined API Key.
-- Tests: To add API tests.
+- Tests: To add **more** API tests.
 - Database migration: To use a migration library for handling database changes.
 - Documentation: To add swagger API documentation.
