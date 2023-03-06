@@ -40,3 +40,4 @@ A service for managing devices. Built in PHP using the Slim Framework.
 - Tests: To add **more** API tests.
 - Database migration: To use a migration library for handling database changes.
 - Documentation: To add swagger API documentation.
+- Pagination: To paginate response returned on `GET /devices` API.
