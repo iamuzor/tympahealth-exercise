@@ -51,26 +51,6 @@ export default {
         alert("Unable to load devices at the moment. Try again later");
       }
     },
-    async createDevice() {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_API_BASE_URL}/devices`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(this.form),
-          }
-        );
-
-        const { data } = await response.json();
-
-        this.devices.push(data);
-      } catch (error) {
-        alert("Unable to load devices at the moment. Try again later");
-      }
-    },
   },
 };
 </script>
