@@ -9,8 +9,19 @@ A service for managing devices. Built in PHP using the Slim Framework.
 ## How to run the API
 
 - In your terminal, run `docker compose up`
+- Run the following querying in the Postgres database
 
-- Using the content of [`./db.sql`](`https://github.com/iamuzor/tympahealth-exercise/blob/master/db.sql`), create the table using your Postgres client of choice.
+  ```sql
+  CREATE TABLE devices (
+      id varchar(255) unique,
+      model varchar(255),
+      brand varchar(255),
+      release_date varchar(255) NULL,
+      os varchar(255) NULL,
+      created_datetime BIGINT NULL,
+      updated_datetime BIGINT NULL
+  );
+  ```
 
 - Enjoy 😊
   ![postman screenshot](./screenshot.png)
