@@ -4,7 +4,7 @@ A service for managing devices. Built in PHP using the Slim Framework.
 
 ## Prerequisite
 
-- Docker.
+- Docker
 
 ## How to use
 
