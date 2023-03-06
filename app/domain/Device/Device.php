@@ -4,7 +4,7 @@ namespace Tympahealth\Domain\Device;
 
 use DomainException;
 use Ramsey\Uuid\Uuid;
-use Tympahealth\Domain\Device\IDeviceRepository;
+use Tympahealth\Domain\Device\DeviceRepository;
 
 class Device implements \JsonSerializable
 {
@@ -23,7 +23,7 @@ class Device implements \JsonSerializable
     /**
      * @return Device[]
      */
-    public static function search(IDeviceRepository $repository, string $text): array
+    public static function search(DeviceRepository $repository, string $text): array
     {
         return array_map(fn($device) => self::transform($device), $repository->search($text));
     }
@@ -31,12 +31,12 @@ class Device implements \JsonSerializable
     /**
      * @return Device[]
      */
-    public static function all(IDeviceRepository $repository): array
+    public static function all(DeviceRepository $repository): array
     {
         return array_map(fn($device) => self::transform($device), $repository->getDevices());
     }
 
-    public static function create(IDeviceRepository $repository, string $brand, string $model, string $os, string $release_date): Device
+    public static function create(DeviceRepository $repository, string $brand, string $model, string $os, string $release_date): Device
     {
         $device = new Device(
             Uuid::uuid4()->toString(),
@@ -53,7 +53,7 @@ class Device implements \JsonSerializable
         return $device;
     }
 
-    public static function update(IDeviceRepository $repository, string $id, array $args): void
+    public static function update(DeviceRepository $repository, string $id, array $args): void
     {
         $device = $repository->find($id);
 
@@ -74,7 +74,7 @@ class Device implements \JsonSerializable
         );
     }
 
-    public static function delete(IDeviceRepository $repository, string $id): void
+    public static function delete(DeviceRepository $repository, string $id): void
     {
         if (!$repository->find($id)) {
             throw new DomainException('DEVICE_NOT_FOUND', 404);

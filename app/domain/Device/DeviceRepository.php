@@ -1,12 +1,11 @@
 <?php
 
-namespace Tympahealth\App\Infrastructure;
+namespace Tympahealth\Domain\Device;
 
 use Medoo\Medoo;
 use Tympahealth\Domain\Device\Device;
-use Tympahealth\Domain\Device\IDeviceRepository;
 
-class DeviceRepository implements IDeviceRepository
+class DeviceRepository
 {
     private static DeviceRepository $instance;
     private Medoo $db;

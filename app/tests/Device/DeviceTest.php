@@ -6,7 +6,7 @@ use DomainException;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Tympahealth\Domain\Device\Device;
-use Tympahealth\Domain\Device\IDeviceRepository;
+use Tympahealth\Domain\Device\DeviceRepository;
 
 class DeviceTest extends TestCase
 {
@@ -14,7 +14,7 @@ class DeviceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(IDeviceRepository::class);
+        $this->repositoryMock = $this->createMock(DeviceRepository::class);
     }
 
     public function testSearch(): void

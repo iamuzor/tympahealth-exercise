@@ -14,9 +14,7 @@
     "require": {
         "slim/slim": "^4.11",
         "laminas/laminas-diactoros": "^2.24",
-        "davidepastore/slim-validation": "^3.0",
         "ramsey/uuid": "^4.7",
-        "sergeytsalkov/meekrodb": "^2.4",
         "catfan/medoo": "^2.1"
     },
     "require-dev": {

@@ -4,15 +4,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
 use Slim\Routing\RouteCollectorProxy;
-use Tympahealth\App\Container;
-use Tympahealth\App\Infrastructure\DeviceRepository;
-use Tympahealth\Domain\Device\IDeviceRepository;
 use Tympahealth\Domain\Device\DeviceController;
-
-$container = new Container();
-$container->set(IDeviceRepository::class, DeviceRepository::getInstance());
-
-AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 $app->addBodyParsingMiddleware();
