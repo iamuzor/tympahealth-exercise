@@ -1,5 +1,7 @@
 # Tympaheath Test
 
+A PHP application built using the Slim Framework.
+
 ## Prerequisite
 
 - Docker
