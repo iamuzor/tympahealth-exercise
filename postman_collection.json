@@ -7,13 +7,117 @@
 	},
 	"item": [
 		{
+			"name": "tests",
+			"item": [
+				{
+					"name": "create device",
+					"item": [
+						{
+							"name": "returns success response",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response",
+											"",
+											"",
+											"pm.test('Returned status code is 200', () => {",
+											"    pm.expect(response.code).to.eql(200)",
+											"})",
+											"",
+											"pm.test('Returned data contains \"id\" property', () => {",
+											"    const { data } = response.json()",
+											"",
+											"    pm.expect(data).to.have.property('id')",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"release_date\": \"2023/03\",\n    \"brand\": \"Apple\",\n    \"os\": \"ios\",\n    \"model\": \"14\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/devices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"devices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "returns error response when release date is in invalid format",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response",
+											"",
+											"",
+											"pm.test('Returned status code is 400', () => {   ",
+											"    pm.expect(response.code).to.eql(400)",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"release_date\": \"2022-08-01\",\n    \"brand\": \"Apple\",\n    \"os\": \"ios\",\n    \"model\": \"14\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/devices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"devices"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "create device",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"release_date\": \"2022/08/01\",\n    \"brand\": \"Apple\",\n    \"os\": \"ios\",\n    \"model\": \"14\"\n}",
+					"raw": "{\n    \"release_date\": \"2022/08\",\n    \"brand\": \"Apple\",\n    \"os\": \"ios\",\n    \"model\": \"14\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

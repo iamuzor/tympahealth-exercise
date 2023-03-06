@@ -1,5 +1,7 @@
 <?php
 
+namespace Tympahealth\Domain\Device;
+
 use DateTime;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
