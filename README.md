@@ -9,7 +9,7 @@ A service for managing devices. Built in PHP using the Slim Framework.
 ## How to run the API
 
 - In your terminal, run `docker compose up`
-- Run the following querying in the Postgres database
+- Run the following querying in the Postgres database.
 
   ```sql
   CREATE TABLE devices (
