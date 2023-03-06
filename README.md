@@ -10,7 +10,7 @@ A service for managing devices. Built in PHP using the Slim Framework.
 
 - In your terminal, run `docker compose up`
 
-- Using the content of [`./db.sql`](`db.sql`), create the table using your Postgres client of choice.
+- Using the content of [`./db.sql`](`https://github.com/iamuzor/tympahealth-exercise/blob/master/db.sql`), create the table using your Postgres client of choice.
 
 - Enjoy 😊
   ![postman screenshot](./screenshot.png)
