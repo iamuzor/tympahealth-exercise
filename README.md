@@ -9,7 +9,7 @@ A service for managing devices. Built in PHP using the Slim Framework.
 ## How to use
 
 - In your terminal, run `docker compose up`
-- Run the following querying in the Postgres database.
+- Run this following query in the Postgres database to create the tables.
 
   ```sql
   CREATE TABLE devices (
