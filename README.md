@@ -4,14 +4,16 @@ A service for managing devices. Built in PHP using the Slim Framework.
 
 ## Prerequisite
 
-- Docker
-- Docker compose
+- Docker.
 
-## How to run project
+## How to run the API
 
-```
-docker compose up
-```
+- In your terminal, run `docker compose up`
+
+- Using the content of [`./db.sql`](`./db.sql`), create the table using your Postgres client of choice.
+
+- Enjoy 😊
+  ![postman screenshot](./screenshot.png)
 
 ## Todo
 
