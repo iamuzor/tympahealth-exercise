@@ -38,13 +38,13 @@ class DeviceRepository implements IDeviceRepository
         return $this->db->query('SELECT * FROM devices ORDER BY os ASC')->fetchAll();
     }
 
-    public function find(string $id): array
+    public function find(string $id): array|null
     {
         $data = $this->db->query("SELECT * FROM devices WHERE id = :id LIMIT 1", [
             ':id' => $id
         ])->fetchAll();
 
-        return count($data) ? $data[0] : [];
+        return count($data) ? $data[0] : null;
     }
 
     public function search(string $text): array

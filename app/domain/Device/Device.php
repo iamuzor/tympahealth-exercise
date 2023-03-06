@@ -2,7 +2,6 @@
 
 namespace Tympahealth\Domain\Device;
 
-use DateTime;
 use DomainException;
 use Ramsey\Uuid\Uuid;
 use Tympahealth\Domain\Device\IDeviceRepository;
