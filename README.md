@@ -1,6 +1,6 @@
 # Tympaheath Test
 
-A PHP application built using the Slim Framework.
+A service for managing devices. Built in PHP using the Slim Framework.
 
 ## Prerequisite
 
@@ -13,12 +13,17 @@ A PHP application built using the Slim Framework.
 docker compose up
 ```
 
-## Improvements
+## Todo
 
-- Data validation: Utilise an efficient library for handling request data validation. (Similar to how Laravel handles validation).
-- Error handling: Introduce middleware that will catch errors and return the error in JSON format.
-- Response Format: Introduce middleware for ensuring consistent data response format.
-- Security: Introduce middleware to validate a predefined API Key.
-- Tests: Add API tests.
-- Database migration: Use a migration library for handling database changes.
-- Documentation: Add swagger API documentation.
+-
+- Web UI
+
+## Improvements (Not implemented)
+
+- Data validation: To utilise an efficient library for handling request data validation. (Similar to how Laravel handles validation).
+- Error handling: To introduce middleware that will catch errors and return the error in JSON format.
+- Response Format: To introduce middleware for ensuring consistent data response format.
+- Security: To introduce middleware to validate a predefined API Key.
+- Tests: To add API tests.
+- Database migration: To use a migration library for handling database changes.
+- Documentation: To add swagger API documentation.
