@@ -23,7 +23,7 @@ A service for managing devices. Built in PHP using the Slim Framework.
   );
   ```
 
-- Enjoy 😊
+- A postman collection has been included. Enjoy 😊
   ![postman screenshot](./screenshot.png)
 
 ## Todo
