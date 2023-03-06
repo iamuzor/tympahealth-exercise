@@ -1,4 +1,4 @@
-# Tympaheath Test
+# Tympahealth (Technical Challenge)
 
 A service for managing devices. Built in PHP using the Slim Framework.
 
