@@ -1,4 +1,4 @@
-# Device Management (Technical Challenge - Tympahealth)
+# Device Management (Technical Challenge, Tympahealth)
 
 A service for managing devices. Built in PHP using the Slim Framework.
 
